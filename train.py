@@ -132,7 +132,7 @@ class Yolo_loss(nn.Module):
         super(Yolo_loss, self).__init__()
         self.device = device
         self.strides = [8, 16, 32]
-        image_size = 1024
+        image_size = 608
         self.n_classes = n_classes
         self.n_anchors = n_anchors
 
@@ -555,6 +555,7 @@ def get_args(**kwargs):
         '-keep-checkpoint-max', type=int, default=10,
         help='maximum number of checkpoints to keep. If set 0, all checkpoints will be kept',
         dest='keep_checkpoint_max')
+    parser.add_argument('-width', type=str, default=608, help='Image sizes')
     args = vars(parser.parse_args())
 
     # for k in args.keys():
